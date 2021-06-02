@@ -1,5 +1,5 @@
 
-
+alert("play the game in the console")
 // the computer player returns a choice of rock/paper/scissors
 function computerPlay() {
     let seed = Math.floor(Math.random() * 100)
@@ -55,4 +55,34 @@ function winnerPicker(computer,human) {
         return "something is wrong"
     }
 
+}
+
+let playerScore = 0
+let computerScore = 0
+
+function game() {
+    let humanChoice = humanPlay()
+    let computerChoice = computerPlay()
+    let roundEnd = winnerPicker(computerChoice,humanChoice)
+    if (roundEnd == "human") {
+        playerScore++
+    } else if (roundEnd == "computer") {
+        computerScore++
+    }
+
+    console.log(`Winner of the last round: ${roundEnd}`)
+    
+}
+
+
+while (playerScore < 2 && computerScore < 2) {
+    game()
+    console.log(`Current Score: computer ${computerScore}  human ${playerScore}`)
+
+}
+
+if (playerScore == 2) {
+    console.log("Human wins")
+} else {
+    console.log("computer wins")
 }
